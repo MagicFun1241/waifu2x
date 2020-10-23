@@ -54,6 +54,7 @@ download(`https://github.com/MagicFun1241/waifu2x/releases/download/${releaseTag
     read.on("end", () => {
         console.log("Extracted");
 
+        fs.chmodSync(path.join(binaryDirectory, platform === 'win32' ? 'waifu2x-converter-cpp.exe' : 'waifu2x-converter-cpp'), 0o755);
         fs.unlinkSync(releaseFileName);
 
         console.log("Cleaned");

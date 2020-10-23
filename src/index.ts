@@ -57,8 +57,6 @@ function convert(input: string, output: string, options: {
                 break;
         }
 
-        console.log(binaryDirectory)
-
         const child = spawn(executablePath, args, {
             cwd: binaryDirectory
         });
@@ -84,7 +82,7 @@ function waifu2x(input: string): Waifu2X {
                     scale: scale
                 }).then(() => {
                     resolve(fs.readFileSync(tmp));
-                });
+                }).catch(err => reject(err));
             });
         },
         toFile(path: string): Promise<void> {
